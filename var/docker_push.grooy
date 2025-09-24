@@ -1,0 +1,8 @@
+def call(string dockerusername, string imagename, string imagetag )
+{
+withcredentails([usernamepassword(credentailsId:'dockerid', password_variable : 'dockerhubpass', username_variable: 'dockerhubuser')])
+{
+  sh "docker login -u ${env.dockerhubuse} -p ${dockerhubpass}"
+}
+   sh "docker push ${dockerusername}/${imagename}:${imagetag}"
+}
